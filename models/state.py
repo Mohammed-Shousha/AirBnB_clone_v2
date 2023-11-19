@@ -1,10 +1,9 @@
 #!/usr/bin/python3
 """State class module"""
 
-from models.base_model import BaseModel
+from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.orm import relationship
-from models import storage
 from os import getenv
 from models.city import City
 
@@ -23,6 +22,7 @@ class State(BaseModel, Base):
         @property
         def cities(self):
             """Get a list of all related City objects"""
+            from models import storage
             city_list = []
             for city in list(storage.all(City).values()):
                 if city.state_id == self.id:
