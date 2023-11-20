@@ -56,7 +56,8 @@ class DBStorage:
         """
         if cls is None:
             for clss in classes:
-                objs = self.__session.query(classes[clss]).all()
+                objs = []
+                objs.extend(self.__session.query(classes[clss]).all())
         else:
             if type(cls) is str:
                 cls = eval(cls)
