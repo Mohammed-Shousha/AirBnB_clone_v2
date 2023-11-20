@@ -130,6 +130,11 @@ class HBNBCommand(cmd.Cmd):
         if class_name not in self.__classes:
             return print("** class doesn't exist **")
 
+        if command_args == 1:
+            new_instance = self.__classes[arg]()
+            new_instance.save()
+            return print(new_instance.id)
+
         params = command_args[1:]
         params_dict = self._parse_params(params)
 
