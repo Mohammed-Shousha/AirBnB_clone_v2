@@ -6,8 +6,8 @@ from models.base_model import BaseModel
 from models.user import User
 from models.state import State
 from models.city import City
-from models.amenity import Amenity
 from models.place import Place
+from models.amenity import Amenity
 from models.review import Review
 from models import storage
 import warnings
@@ -125,14 +125,15 @@ class HBNBCommand(cmd.Cmd):
         """
         command_args = parse(arg)
 
-        if not command_args:
+        if len(command_args) == 0:
             return print("** class name missing **")
 
         class_name = command_args[0]
+
         if class_name not in self.__classes:
             return print("** class doesn't exist **")
 
-        if command_args == 1:
+        if len(command_args) == 1:
             new_instance = self.__classes[class_name]()
             new_instance.save()
             return print(new_instance.id)
