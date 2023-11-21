@@ -131,7 +131,7 @@ class HBNBCommand(cmd.Cmd):
             return print("** class doesn't exist **")
 
         if command_args == 1:
-            new_instance = self.__classes[arg]()
+            new_instance = self.__classes[class_name]()
             new_instance.save()
             return print(new_instance.id)
 
