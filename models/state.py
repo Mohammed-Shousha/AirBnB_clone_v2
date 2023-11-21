@@ -14,9 +14,12 @@ class State(BaseModel, Base):
     Attributes:
         name (str): the name of the state
     """
-    __tablename__ = "states"
-    name = Column(String(128), nullable=False)
-    cities = relationship("City", backref="state", cascade="delete")
+    if getenv("HBNB_TYPE_STORAGE", None) == 'db':
+        __tablename__ = "states"
+        name = Column(String(128), nullable=False)
+        cities = relationship("City", backref="state", cascade="delete")
+    else:
+        name = ""
 
     if getenv("HBNB_TYPE_STORAGE") != "db":
         @property
