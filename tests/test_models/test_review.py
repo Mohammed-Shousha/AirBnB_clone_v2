@@ -15,7 +15,6 @@ class TestReview(unittest.TestCase):
         self.review.user_id = "007"
         self.review.text = "Perfecto"
 
-
     def tearDown(self):
         """Tears down Review testing"""
         del self.review
