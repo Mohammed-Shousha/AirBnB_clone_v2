@@ -11,6 +11,17 @@ class TestPlace(unittest.TestCase):
     def setUp(self):
         """Sets up Place for testing"""
         self.place = Place()
+        self.place.city_id = "123"
+        self.place.user_id = "007"
+        self.place.name = "New Place"
+        self.place.description = "New Description"
+        self.place.number_rooms = 5
+        self.place.number_bathrooms = 2
+        self.place.max_guest = 3
+        self.place.price_by_night = 100
+        self.place.latitude = 37.0
+        self.place.longitude = -122.4
+        self.place.amenity_ids = ["123", "456"]
 
     def tearDown(self):
         """Tears down Place testing"""
@@ -24,67 +35,67 @@ class TestPlace(unittest.TestCase):
         """Tests place city_id"""
         self.assertTrue(hasattr(self.place, "city_id"))
         self.assertEqual(type(self.place.city_id), str)
-        self.assertEqual(self.place.city_id, "")
+        self.assertEqual(self.place.city_id, "123")
 
     def test_place_user_id(self):
         """Tests place user_id"""
         self.assertTrue(hasattr(self.place, "user_id"))
         self.assertEqual(type(self.place.user_id), str)
-        self.assertEqual(self.place.user_id, "")
+        self.assertEqual(self.place.user_id, "007")
 
     def test_place_name(self):
         """Tests place name"""
         self.assertTrue(hasattr(self.place, "name"))
         self.assertEqual(type(self.place.name), str)
-        self.assertEqual(self.place.name, "")
+        self.assertEqual(self.place.name, "New Place")
 
     def test_place_description(self):
         """Tests place description"""
         self.assertTrue(hasattr(self.place, "description"))
         self.assertEqual(type(self.place.description), str)
-        self.assertEqual(self.place.description, "")
+        self.assertEqual(self.place.description, "New Description")
 
     def test_place_number_rooms(self):
         """Tests place number_rooms"""
         self.assertTrue(hasattr(self.place, "number_rooms"))
         self.assertEqual(type(self.place.number_rooms), int)
-        self.assertEqual(self.place.number_rooms, 0)
+        self.assertEqual(self.place.number_rooms, 5)
 
     def test_place_number_bathrooms(self):
         """Tests place number_bathrooms"""
         self.assertTrue(hasattr(self.place, "number_bathrooms"))
         self.assertEqual(type(self.place.number_bathrooms), int)
-        self.assertEqual(self.place.number_bathrooms, 0)
+        self.assertEqual(self.place.number_bathrooms, 2)
 
     def test_place_max_guest(self):
         """Tests place max_guest"""
         self.assertTrue(hasattr(self.place, "max_guest"))
         self.assertEqual(type(self.place.max_guest), int)
-        self.assertEqual(self.place.max_guest, 0)
+        self.assertEqual(self.place.max_guest, 3)
 
     def test_place_price_by_night(self):
         """Tests place price_by_night"""
         self.assertTrue(hasattr(self.place, "price_by_night"))
         self.assertEqual(type(self.place.price_by_night), int)
-        self.assertEqual(self.place.price_by_night, 0)
+        self.assertEqual(self.place.price_by_night, 100)
 
     def test_place_latitude(self):
         """Tests place latitude"""
         self.assertTrue(hasattr(self.place, "latitude"))
         self.assertEqual(type(self.place.latitude), float)
-        self.assertEqual(self.place.latitude, 0.0)
+        self.assertEqual(self.place.latitude, 37.0)
 
     def test_place_longitude(self):
         """Tests place longitude"""
         self.assertTrue(hasattr(self.place, "longitude"))
         self.assertEqual(type(self.place.longitude), float)
-        self.assertEqual(self.place.longitude, 0.0)
+        self.assertEqual(self.place.longitude, -122.4)
 
     def test_place_amenity_ids(self):
         """Tests place amenity_ids"""
         self.assertTrue(hasattr(self.place, "amenity_ids"))
         self.assertEqual(type(self.place.amenity_ids), list)
-        self.assertEqual(self.place.amenity_ids, [])
+        self.assertEqual(self.place.amenity_ids, ["123", "456"])
 
     def test_place_id(self):
         """Tests place id"""

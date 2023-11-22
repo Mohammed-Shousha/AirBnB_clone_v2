@@ -11,6 +11,8 @@ class TestCity(unittest.TestCase):
     def setUp(self):
         """Sets up City for testing"""
         self.city = City()
+        self.city.name = "Cairo"
+        self.city.state_id = "EG"
 
     def tearDown(self):
         """Tears down City testing"""
@@ -24,13 +26,13 @@ class TestCity(unittest.TestCase):
         """Tests city name"""
         self.assertTrue(hasattr(self.city, "name"))
         self.assertEqual(type(self.city.name), str)
-        self.assertEqual(self.city.name, "")
+        self.assertEqual(self.city.name, "Cairo")
 
     def test_city_state_id(self):
         """Tests city state_id"""
         self.assertTrue(hasattr(self.city, "state_id"))
         self.assertEqual(type(self.city.state_id), str)
-        self.assertEqual(self.city.state_id, "")
+        self.assertEqual(self.city.state_id, "EG")
 
     def test_city_id(self):
         """Tests city id"""

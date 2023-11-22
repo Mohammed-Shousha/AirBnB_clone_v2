@@ -11,6 +11,7 @@ class TestAmenity(unittest.TestCase):
     def setUp(self):
         """Sets up Amenity for testing"""
         self.amenity = Amenity()
+        self.amenity.name = "Wifi"
 
     def tearDown(self):
         """Tears down Amenity testing"""
@@ -24,7 +25,7 @@ class TestAmenity(unittest.TestCase):
         """Tests amenity name"""
         self.assertTrue(hasattr(self.amenity, "name"))
         self.assertEqual(type(self.amenity.name), str)
-        self.assertEqual(self.amenity.name, "")
+        self.assertEqual(self.amenity.name, "Wifi")
 
     def test_amenity_id(self):
         """Tests amenity id"""

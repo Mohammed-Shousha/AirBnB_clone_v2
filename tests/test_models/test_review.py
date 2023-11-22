@@ -11,6 +11,10 @@ class TestReview(unittest.TestCase):
     def setUp(self):
         """Sets up Review for testing"""
         self.review = Review()
+        self.review.place_id = "123"
+        self.review.user_id = "007"
+        self.review.text = "Perfecto"
+
 
     def tearDown(self):
         """Tears down Review testing"""
@@ -24,19 +28,19 @@ class TestReview(unittest.TestCase):
         """Tests review place_id"""
         self.assertTrue(hasattr(self.review, "place_id"))
         self.assertEqual(type(self.review.place_id), str)
-        self.assertEqual(self.review.place_id, "")
+        self.assertEqual(self.review.place_id, "123")
 
     def test_review_user_id(self):
         """Tests review user_id"""
         self.assertTrue(hasattr(self.review, "user_id"))
         self.assertEqual(type(self.review.user_id), str)
-        self.assertEqual(self.review.user_id, "")
+        self.assertEqual(self.review.user_id, "007")
 
     def test_review_text(self):
         """Tests review text"""
         self.assertTrue(hasattr(self.review, "text"))
         self.assertEqual(type(self.review.text), str)
-        self.assertEqual(self.review.text, "")
+        self.assertEqual(self.review.text, "Perfecto")
 
     def test_review_id(self):
         """Tests review id"""
