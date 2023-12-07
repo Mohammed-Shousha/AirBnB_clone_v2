@@ -14,28 +14,34 @@ def do_deploy(archive_path):
     if not exists(archive_path):
         return False
 
-    try:
-        file = archive_path.split("/")[-1]
-        name = file.replace('.tgz', '')
+    file = archive_path.split("/")[-1]
+    name = file.split(".")[0]
 
-        path = "/data/web_static/releases/"
 
-        put(archive_path, f"/tmp/{file}")
-
-        sudo(f"mkdir -p {path}{name}/")
-        sudo(f"tar -xzf /tmp/{file} -C {path}{name}/")
-
-        sudo(f"rm /tmp/{file}")
-
-        sudo(f"mv {path}{name}/web_static/* {path}{name}/")
-
-        sudo(f"rm -rf {path}{name}/web_static")
-        sudo("rm -rf /data/web_static/current")
-
-        sudo(f"ln -s {path}{name}/ /data/web_static/current")
-
-        print("New version deployed!")
-
-        return True
-    except:
+    if put(archive_path, "/tmp/{}".format(file)).failed:
         return False
+    if run("rm -rf /data/web_static/releases/{}/"
+           .format(name)).failed:
+        return False
+    if run("mkdir -p /data/web_static/releases/{}/"
+           .format(name)).failed:
+        return False
+    if run("tar -xzf /tmp/{} -C /data/web_static/releases/{}/"
+           .format(file, name)).failed:
+        return False
+    if run("rm /tmp/{}".format(file)).failed:
+        return False
+    if run("mv /data/web_static/releases/{}/web_static/* "
+           "/data/web_static/releases/{}/".format(name, name)).failed:
+        return False
+    if run("rm -rf /data/web_static/releases/{}/web_static"
+           .format(name)).failed:
+        return False
+    if run("rm -rf /data/web_static/current").failed:
+        return False
+    if run("ln -s /data/web_static/releases/{}/ /data/web_static/current"
+           .format(name)).failed:
+        return False
+
+    print("New version deployed!")
+    return True
