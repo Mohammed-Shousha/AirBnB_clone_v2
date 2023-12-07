@@ -15,25 +15,17 @@ def do_deploy(archive_path):
         return False
 
     try:
-        file = archive_path.split("/")[-1]
-        name = file.replace('.tgz', '')
-
+        file_n = archive_path.split("/")[-1]
+        name = file_n.split(".")[0]
         path = "/data/web_static/releases/"
-
-        put(archive_path, f"/tmp/{file}")
-
-        run(f"mkdir -p {path}{name}/")
-        run(f"tar -xzf /tmp/{file} -C {path}{name}/")
-
-        run(f"rm /tmp/{file}")
-
-        run(f"mv {path}{name}/web_static/* {path}{name}/")
-
-        run(f"rm -rf {path}{name}/web_static")
-        run("rm -rf /data/web_static/current")
-
-        run(f"ln -s {path}{name}/ /data/web_static/current")
-
+        put(archive_path, '/tmp/')
+        run('mkdir -p {}{}/'.format(path, name))
+        run('tar -xzf /tmp/{} -C {}{}/'.format(file_n, path, name))
+        run('rm /tmp/{}'.format(file_n))
+        run('mv {0}{1}/web_static/* {0}{1}/'.format(path, name))
+        run('rm -rf {}{}/web_static'.format(path, name))
+        run('rm -rf /data/web_static/current')
+        run('ln -s {}{}/ /data/web_static/current'.format(path, name))
         return True
     except:
         return False
