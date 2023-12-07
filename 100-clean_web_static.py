@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # creates and distributes an archive to the web servers
-from fabric.api import local, lcd, cd, run
+from fabric.api import env, local, lcd, cd, run
 import os
 
 env.hosts = ["100.26.160.21", "52.90.13.8"]
