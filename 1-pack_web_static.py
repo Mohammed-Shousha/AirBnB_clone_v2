@@ -9,7 +9,7 @@ from fabric.api import local
 
 
 def do_pack():
-    """Generates a .tgz archive from the contents of the 'web_static' directory."""
+    """Generates a .tgz archive"""
     date = datetime.now().strftime("%Y%m%d%H%M%S")
     file_path = f"versions/web_static_{date}.tgz"
 
