@@ -20,7 +20,7 @@ def do_deploy(archive_path):
 
         path = "/data/web_static/releases/"
 
-        put(archive_path, f"/tmp/")
+        put(archive_path, f"/tmp/{file}")
 
         sudo(f"mkdir -p {path}{name}/")
         sudo(f"tar -xzf /tmp/{file} -C {path}{name}/")
@@ -33,6 +33,9 @@ def do_deploy(archive_path):
         sudo("rm -rf /data/web_static/current")
 
         sudo(f"ln -s {path}{name}/ /data/web_static/current")
+
+        print("New version deployed!")
+
         return True
-    except Exception:
+    except:
         return False
