@@ -5,6 +5,8 @@ from fabric.api import env, put, run, local
 
 
 env.hosts = ['100.26.160.21', '52.90.13.8']
+env.user = "ubuntu"
+env.key_filename = "~/.ssh/school"
 
 
 def do_deploy(archive_path):
@@ -33,5 +35,5 @@ def do_deploy(archive_path):
         run(f"ln -s {path}{name}/ /data/web_static/current")
 
         return True
-    except Exception:
+    except:
         return False
