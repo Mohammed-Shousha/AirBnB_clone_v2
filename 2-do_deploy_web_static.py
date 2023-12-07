@@ -20,7 +20,7 @@ def do_deploy(archive_path):
 
         path = "/data/web_static/releases/"
 
-        put(archive_path, f"/tmp/{file}")
+        put(archive_path, f"/tmp/")
 
         sudo(f"mkdir -p {path}{name}/")
         sudo(f"tar -xzf /tmp/{file} -C {path}{name}/")
