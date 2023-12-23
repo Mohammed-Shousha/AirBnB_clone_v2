@@ -1,9 +1,11 @@
 #!/usr/bin/python3
-"""hbnb filter
-"""
+
+""" Simple Flask App """
+
 from flask import Flask, render_template, Markup
 from models import storage
-import sys
+from models import *
+
 app = Flask(__name__)
 
 
