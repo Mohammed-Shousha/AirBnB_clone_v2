@@ -41,8 +41,11 @@ class DBStorage:
         my_sql_db = getenv("HBNB_MYSQL_DB")
         hbnb_env = getenv("HBNB_ENV")
 
+        connection_string = (f"mysql+mysqldb://{my_sql_user}:{my_sql_pwd}"
+                             f"@{my_sql_host}/{my_sql_db}")
+
         self.__engine = create_engine(
-            f"mysql+mysqldb://{my_sql_user}:{my_sql_pwd}@{my_sql_host}/{my_sql_db}",
+            connection_string,
             pool_pre_ping=True
         )
 
